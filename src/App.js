@@ -2,6 +2,7 @@ import './App.css';
 import Likes from './Likes';
 import Title from './Title';
 import Comments from './Comments';
+import { commentsReducer } from './redux/commentsReducer';
 
 
 

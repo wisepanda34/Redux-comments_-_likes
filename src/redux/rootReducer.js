@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
 import { likesReducer } from "./likesReducer";
 import { inputReducer } from "./inputReducer";
-import { commentReducers } from "./commentReducers";
+import { commentsReducer } from "./commentsReducer";
 
 
 // скопка редюсеров
 export const rootReducer = combineReducers({
 	likesReducer: likesReducer,
 	inputReducer: inputReducer,
-	commentReducers: commentReducers
+	commentsReducer: commentsReducer
 })

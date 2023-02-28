@@ -5,26 +5,31 @@ import uniqid from "uniqid"
 import SingleComment from "./SingleComment";
 
 function Comments(props) {
-	console.log('Comments props	>>', props);
 
-	const { textComment, setTextComment } = useState('')
+	const [textComment, setTextComment] = useState('');
 
-	//получаеим состояние из хранилища
+	// console.log('Comments props	>>', props);
+
+	// получаеим состояние из хранилища
 	const comments = useSelector(state => {
-		console.log('redux state>>', state);
+		const { commentsReducer } = state;
+		// console.log('redux state>>', state);
+
+		return commentsReducer.comments;
+
 	})
+	console.log('comments >>', comments);
 
 	const dispatch = useDispatch()
 
 	const handleInput = (e) => {
-		setTextComment(e.target.value)
+		setTextComment(e.target.value);
 	}
+
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		console.log('submit textComment>>', textComment);
 		const id = uniqid()
 		dispatch(commentCreate(textComment, id))
-
 	}
 
 
@@ -34,7 +39,9 @@ function Comments(props) {
 				<input type="text" value={textComment} onChange={handleInput} />
 				<input type="submit" hidden />
 			</form>
-			<SingleComment />
+			{!!comments.length && comments.map(res => {
+				return <SingleComment key={res.id} data={res} />
+			})}
 		</div>
 	);
 }

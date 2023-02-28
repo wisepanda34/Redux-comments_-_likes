@@ -12,7 +12,7 @@ function Title(props) {
 	const dispatch = useDispatch()
 
 	const handleChange = (e) => {
-		console.log('handlechange>>', e.target.value);
+		// console.log('handlechange>>', e.target.value);
 		dispatch(inputText(e.target.value))
 	}
 
